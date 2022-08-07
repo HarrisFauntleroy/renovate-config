@@ -2,21 +2,27 @@
 	"extends": ["config:base"],
 	"prHourlyLimit": 0,
 	"prConcurrentLimit": 8,
-	"automerge": false,
 	"separateMinorPatch": true,
+	"addLabels": ["renovate"],
 	"packageRules": [
 		{
 			"updateTypes": ["major"],
-			"addLabels": ["Renovate", "Major", "Manual"]
+			"addLabels": ["major", "auto-merge"],
+			"automerge": true
+		},
+		{
+			"updateTypes": ["security"],
+			"addLabels": ["security", "auto-merge"],
+			"automerge": true
 		},
 		{
 			"updateTypes": ["minor"],
-			"addLabels": ["Renovate", "Minor", "Auto"],
+			"addLabels": ["minor", "auto-merge"],
 			"automerge": true
 		},
 		{
 			"updateTypes": ["patch", "digest", "bump"],
-			"addLabels": ["Renovate", "Patch", "Auto"],
+			"addLabels": ["patch", "auto-merge"],
 			"automerge": true
 		}
 	],
