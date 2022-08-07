@@ -1,0 +1,15 @@
+{
+	"extends": ["config:base"],
+	"automerge": false,
+	"separateMinorPatch": true,
+	"packageRules": [
+		{
+			"updateTypes": ["patch"],
+			"automerge": true
+		}
+	],
+	"lockFileMaintenance": {
+		"enabled": true,
+		"automerge": true
+	}
+}
