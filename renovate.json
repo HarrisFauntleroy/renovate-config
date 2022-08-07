@@ -1,10 +1,22 @@
 {
 	"extends": ["config:base"],
+	"prHourlyLimit": 0,
+	"prConcurrentLimit": 0,
 	"automerge": false,
 	"separateMinorPatch": true,
 	"packageRules": [
 		{
-			"updateTypes": ["patch"],
+			"updateTypes": ["major"],
+			"addLabels": ["Renovate", "Major", "Manual"]
+		},
+		{
+			"updateTypes": ["minor"],
+			"addLabels": ["Renovate", "Minor", "Auto"],
+			"automerge": true
+		},
+		{
+			"updateTypes": ["patch", "digest", "bump"],
+			"addLabels": ["Renovate", "Patch", "Auto"],
 			"automerge": true
 		}
 	],
