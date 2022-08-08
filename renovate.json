@@ -24,6 +24,11 @@
 			"updateTypes": ["patch", "digest", "bump"],
 			"addLabels": ["patch", "auto-merge"],
 			"automerge": true
+		},
+		{
+			"updateTypes": ["pin"],
+			"addLabels": ["📌", "auto-merge"],
+			"automerge": true
 		}
 	],
 	"lockFileMaintenance": {
