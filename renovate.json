@@ -1,12 +1,11 @@
 {
 	"extends": ["config:base",":rebaseStalePrs"],
-	"prHourlyLimit": 2,
-	"prConcurrentLimit": 4,
 	"addLabels": ["renovate"],
 	"packageRules": [
 		{
 			"matchUpdateTypes": ["major"],
-			"labels": ["UPDATE-MAJOR"]
+			"labels": ["UPDATE-MAJOR"],
+			"automerge": false,
 		},
 		{
 			"description": "Automatically merge minor and patch-level updates",
