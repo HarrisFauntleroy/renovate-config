@@ -1,21 +1,22 @@
 {
-	"extends": ["config:base",":rebaseStalePrs"],
-	"addLabels": ["renovate"],
-	"packageRules": [
-		{
-			"matchUpdateTypes": ["major"],
-			"labels": ["UPDATE-MAJOR"],
-			"automerge": false,
-		},
-		{
-			"description": "Automatically merge minor and patch-level updates",
-			"matchUpdateTypes": ["minor", "patch", "digest"],
-			"automerge": true,
-			"automergeType": "branch"
-		}
-	],
-	"lockFileMaintenance": {
-		"enabled": true,
-		"automerge": true
-	}
+  "extends": ["config:base", ":rebaseStalePrs"],
+  "addLabels": ["renovate"],
+  "prConcurrentLimit": 4,
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["major"],
+      "labels": ["UPDATE-MAJOR"],
+      "automerge": false
+    },
+    {
+      "description": "Automatically merge minor and patch-level updates",
+      "matchUpdateTypes": ["minor", "patch", "digest"],
+      "automerge": true,
+      "automergeType": "pr"
+    }
+  ],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true
+  }
 }
