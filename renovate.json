@@ -1,7 +1,12 @@
 {
   "extends": ["config:base", ":rebaseStalePrs"],
   "addLabels": ["renovate"],
-  "prConcurrentLimit": 4,
+  "lockFileMaintenance": { "enabled": false },
+  "dependencyDashboard": true,
+  "dependencyDashboardAutoclose": true,
+  "major": {
+    "dependencyDashboardApproval": true
+  },
   "packageRules": [
     {
       "matchUpdateTypes": ["major"],
@@ -15,8 +20,7 @@
       "automergeType": "pr"
     }
   ],
-  "lockFileMaintenance": {
-    "enabled": true,
-    "automerge": true
-  }
+  "prCreation": "not-pending",
+  "prConcurrentLimit": 4,
+  "stabilityDays": 2
 }
