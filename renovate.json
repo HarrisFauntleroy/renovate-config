@@ -10,7 +10,7 @@
   "packageRules": [
     {
       "matchUpdateTypes": ["major"],
-      "labels": ["UPDATE-MAJOR"],
+      "labels": ["UPDATE-MAJOR", "HIGH-CONFIDENCE"],
       "automerge": false
     },
     {
@@ -18,6 +18,13 @@
       "matchUpdateTypes": ["minor", "patch", "digest"],
       "automerge": true,
       "automergeType": "pr"
+    },
+    {
+      "description": "Only create PRs for updates with high confidence and adoption",
+      "matchConfidence": "high",
+      "matchPopularityThreshold": 80,
+      "labels": ["UPDATE", "HIGH-CONFIDENCE"],
+      "automerge": true
     }
   ],
   "prCreation": "not-pending",
