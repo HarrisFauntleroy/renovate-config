@@ -1,33 +1,31 @@
 {
   "extends": ["config:base", ":rebaseStalePrs"],
   "addLabels": ["renovate"],
-  "lockFileMaintenance": { "enabled": false },
+  "lockFileMaintenance": { "enabled": true },
   "dependencyDashboard": true,
   "dependencyDashboardAutoclose": true,
+  "schedule": ["at any time"],
   "major": {
     "dependencyDashboardApproval": true
   },
   "packageRules": [
     {
       "matchUpdateTypes": ["major"],
-      "labels": ["UPDATE-MAJOR", "HIGH-CONFIDENCE"],
+      "labels": ["MAJOR"],
       "automerge": false
     },
     {
-      "description": "Automatically merge minor and patch-level updates",
-      "matchUpdateTypes": ["minor", "patch", "digest"],
-      "automerge": true,
-      "automergeType": "pr"
-    },
-    {
       "description": "Only create PRs for updates with high confidence and adoption",
+      "matchUpdateTypes": ["minor", "major", "patch", "digest"],
       "matchConfidence": "high",
       "matchPopularityThreshold": 80,
-      "labels": ["UPDATE", "HIGH-CONFIDENCE"],
-      "automerge": true
+      "labels": ["HIGH-CONFIDENCE"],
+      "automerge": true,
+      "automergeType": "pr"
+      "enabled": true
     }
   ],
   "prCreation": "not-pending",
   "prConcurrentLimit": 4,
-  "stabilityDays": 2
+  "stabilityDays": 7
 }
