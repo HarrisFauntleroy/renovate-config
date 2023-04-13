@@ -21,7 +21,7 @@
       "matchPopularityThreshold": 80,
       "labels": ["HIGH-CONFIDENCE"],
       "automerge": true,
-      "automergeType": "pr"
+      "automergeType": "pr",
       "enabled": true
     }
   ],
