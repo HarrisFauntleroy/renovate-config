@@ -13,7 +13,7 @@
     "enabled": true,
     "automerge": true,
     "extends": [
-      "schedule:monthly"
+      "schedule:weekly"
     ]
   },
   "major": {
