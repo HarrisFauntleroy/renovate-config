@@ -32,7 +32,8 @@
     "automerge": true
   },
   "docker": {
-    "enabled": false
+    "enabled": false,
+    "additionalBranchPrefix": "docker-"
   },
   "packageRules": [
     {
