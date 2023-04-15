@@ -1,31 +1,69 @@
 {
-  "extends": ["config:base", ":rebaseStalePrs"],
-  "addLabels": ["renovate"],
-  "lockFileMaintenance": { "enabled": true },
+  "extends": [
+    "config:base",
+    ":rebaseStalePrs"
+  ],
+  "addLabels": [
+    "renovate"
+  ],
   "dependencyDashboard": true,
   "dependencyDashboardAutoclose": true,
-  "schedule": ["every weekend"],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true,
+    "extends": [
+      "schedule:monthly"
+    ]
+  },
   "major": {
-    "dependencyDashboardApproval": true
+    "matchConfidence": "high",
+    "automerge": false
+  },
+  "minor": {
+    "matchConfidence": "high",
+    "automerge": true
+  },
+  "patch": {
+    "matchConfidence": "high",
+    "automerge": true
+  },
+  "pin": {
+    "matchConfidence": "high",
+    "automerge": true
+  },
+  "docker": {
+    "enabled": false
   },
   "packageRules": [
     {
-      "matchUpdateTypes": ["major"],
-      "labels": ["MAJOR"],
-      "automerge": false
+      "matchConfidence": "high",
+      "automerge": true,
+      "extends": [
+        "packages:linters"
+      ]
     },
     {
-      "description": "Only create PRs for updates with high confidence and adoption",
-      "matchUpdateTypes": ["minor", "major", "patch", "digest"],
       "matchConfidence": "high",
-      "matchPopularityThreshold": 80,
-      "labels": ["HIGH-CONFIDENCE"],
       "automerge": true,
-      "automergeType": "pr",
-      "enabled": true
+      "extends": [
+        "packages:test"
+      ]
+    },
+    {
+      "matchConfidence": "high",
+      "automerge": true,
+      "matchPackagePrefixes": [
+        "@types/"
+      ]
     }
   ],
+  "ignoreTests": false,
+  "automergeType": "pr",
+  "separateMinorPatch": false,
   "prCreation": "not-pending",
-  "prConcurrentLimit": 0,
-  "stabilityDays": 7
+  "prConcurrentLimit": 10,
+  "prHourlyLimit": 0,
+  "vulnerabilityAlerts": {
+    "enabled": true
+  }
 }
