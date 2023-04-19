@@ -62,7 +62,7 @@
   "automergeType": "pr",
   "separateMinorPatch": false,
   "prCreation": "not-pending",
-  "prConcurrentLimit": 0,
+  "prConcurrentLimit": 10,
   "prHourlyLimit": 0,
   "vulnerabilityAlerts": {
     "enabled": true
