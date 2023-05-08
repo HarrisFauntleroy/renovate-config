@@ -57,7 +57,6 @@
   "ignoreTests": false,
   "automergeType": "pr",
   "separateMinorPatch": false,
-  "matchConfidence": "high",
   "prCreation": "not-pending",
   "prConcurrentLimit": 10,
   "prHourlyLimit": 0,
