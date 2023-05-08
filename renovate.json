@@ -2,41 +2,36 @@
   "extends": [
     "config:base",
     ":rebaseStalePrs",
-  ],
-  "addLabels": [
-    "renovate"
+    "schedule:monthly"
   ],
   "dependencyDashboard": true,
   "dependencyDashboardAutoclose": true,
+  "addLabels": [
+    "renovate"
+  ],
   "lockFileMaintenance": {
     "enabled": true,
-    "automerge": true,
-    "extends": [
-      "schedule:weekly"
-    ]
-  },
-  "major": {
-    "matchConfidence": "high",
-    "automerge": false
-  },
-  "minor": {
-    "matchConfidence": "high",
     "automerge": true
   },
-  "patch": {
-    "matchConfidence": "high",
-    "automerge": true
-  },
-  "pin": {
-    "matchConfidence": "high",
-    "automerge": true
-  },
-  "docker": {
-    "enabled": false,
-    "additionalBranchPrefix": "docker-"
-  },
-  "prBodyNotes": ["@openai: ignore"],
   "packageRules": [
+    {
+      "description": "Major updates",
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "matchConfidence": "high",
+      "automerge": true
+    },
+    {
+      "description": "Automatically merge minor and patch-level updates",
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "digest"
+      ],
+      "matchConfidence": "high",
+      "automerge": true
+    },
     {
       "matchConfidence": "high",
       "automerge": true,
@@ -62,9 +57,13 @@
   "ignoreTests": false,
   "automergeType": "pr",
   "separateMinorPatch": false,
+  "matchConfidence": "high",
   "prCreation": "not-pending",
   "prConcurrentLimit": 10,
   "prHourlyLimit": 0,
+  "prBodyNotes": [
+    "@openai: ignore"
+  ],
   "vulnerabilityAlerts": {
     "enabled": true
   }
