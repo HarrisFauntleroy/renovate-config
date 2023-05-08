@@ -35,6 +35,7 @@
     "enabled": false,
     "additionalBranchPrefix": "docker-"
   },
+  "prBodyNotes": ["@openai: ignore"],
   "packageRules": [
     {
       "matchConfidence": "high",
