@@ -4,8 +4,6 @@
     "group:monorepos",
     "group:recommended",
     "group:linters",
-    "group:react",
-    "group:typescript"
   ],
   "timezone": "UTC",
   "schedule": ["before 3am on the first day of the month"],
