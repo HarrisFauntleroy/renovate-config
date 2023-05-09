@@ -20,7 +20,7 @@
         "major"
       ],
       "matchConfidence": "high",
-      "automerge": true
+      "automerge": false
     },
     {
       "description": "Automatically merge minor and patch-level updates",
@@ -32,27 +32,6 @@
       "matchConfidence": "high",
       "automerge": true
     },
-    {
-      "matchConfidence": "high",
-      "automerge": true,
-      "extends": [
-        "packages:linters"
-      ]
-    },
-    {
-      "matchConfidence": "high",
-      "automerge": true,
-      "extends": [
-        "packages:test"
-      ]
-    },
-    {
-      "matchConfidence": "high",
-      "automerge": true,
-      "matchPackagePrefixes": [
-        "@types/"
-      ]
-    }
   ],
   "ignoreTests": false,
   "automergeType": "pr",
