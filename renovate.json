@@ -1,48 +1,69 @@
 {
   "extends": [
     "config:base",
-    ":rebaseStalePrs",
-    "schedule:monthly"
+    "group:monorepos",
+    "group:recommended",
+    "group:linters",
+    "group:react",
+    "group:typescript"
   ],
-  "dependencyDashboard": true,
-  "dependencyDashboardAutoclose": true,
-  "addLabels": [
-    "renovate"
-  ],
-  "lockFileMaintenance": {
-    "enabled": true,
-    "automerge": true
-  },
-  "packageRules": [
-    {
-      "description": "Major updates",
-      "matchUpdateTypes": [
-        "major"
-      ],
-      "matchConfidence": "high",
-      "automerge": false
-    },
-    {
-      "description": "Automatically merge minor and patch-level updates",
-      "matchUpdateTypes": [
-        "minor",
-        "patch",
-        "digest"
-      ],
-      "matchConfidence": "high",
-      "automerge": true
-    },
-  ],
-  "ignoreTests": false,
-  "automergeType": "pr",
-  "separateMinorPatch": false,
+  "timezone": "UTC",
+  "schedule": ["before 3am on the first day of the month"],
   "prCreation": "not-pending",
-  "prConcurrentLimit": 10,
-  "prHourlyLimit": 0,
   "prBodyNotes": [
     "@openai: ignore"
   ],
-  "vulnerabilityAlerts": {
-    "enabled": true
-  }
+  "stabilityDays": 7,
+  "rangeStrategy": "bump",
+  "semanticCommits": true,
+  "packageRules": [
+    {
+      "matchPackagePatterns": ["^@types/"],
+      "groupName": "type definitions",
+      "groupSlug": "type-definitions"
+    },
+    {
+      "depTypeList": ["devDependencies"],
+      "groupName": "development dependencies",
+      "groupSlug": "dev-dependencies"
+    },
+    {
+      "matchUpdateTypes": ["major", "minor", "patch"],
+      "automerge": false
+    },
+    {
+      "matchPackageNames": ["eslint", "eslint-*"],
+      "groupName": "ESLint packages",
+      "groupSlug": "eslint-packages"
+    },
+    {
+      "matchPackageNames": ["next", "next-*"],
+      "groupName": "Next.js packages",
+      "groupSlug": "next-packages"
+    },
+    {
+      "matchPackageNames": ["react", "react-*"],
+      "groupName": "React packages",
+      "groupSlug": "react-packages"
+    },
+    {
+      "matchPackageNames": ["typescript", "ts-*"],
+      "groupName": "TypeScript packages",
+      "groupSlug": "typescript-packages"
+    },
+    {
+      "matchPackagePatterns": ["^@types/"],
+      "groupName": "Type Definitions packages",
+      "groupSlug": "type-definitions-packages"
+    },
+    {
+      "vulnerabilityAlerts": {
+        "groupName": "security updates",
+        "groupSlug": "security-updates",
+        "automerge": true,
+        "automergeType": "branch"
+      }
+    }
+  ]
 }
+
