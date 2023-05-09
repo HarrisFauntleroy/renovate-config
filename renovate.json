@@ -3,26 +3,26 @@
     "config:base",
     "group:monorepos",
     "group:recommended",
-    "group:linters",
+    "group:linters"
   ],
   "timezone": "UTC",
   "schedule": ["before 3am on the first day of the month"],
   "prCreation": "not-pending",
-  "prBodyNotes": [
-    "@openai: ignore"
-  ],
   "stabilityDays": 7,
   "rangeStrategy": "bump",
   "semanticCommits": true,
+  "vulnerabilityAlerts": {
+    "enabled": true
+  },
   "packageRules": [
     {
       "matchPackagePatterns": ["^@types/"],
-      "groupName": "type definitions",
+      "groupName": "Type Definitions",
       "groupSlug": "type-definitions"
     },
     {
       "depTypeList": ["devDependencies"],
-      "groupName": "development dependencies",
+      "groupName": "Development Dependencies",
       "groupSlug": "dev-dependencies"
     },
     {
@@ -31,37 +31,36 @@
     },
     {
       "matchPackageNames": ["eslint", "eslint-*"],
-      "groupName": "ESLint packages",
+      "groupName": "ESLint Packages",
       "groupSlug": "eslint-packages"
     },
     {
       "matchPackageNames": ["next", "next-*"],
-      "groupName": "Next.js packages",
+      "groupName": "Next.js Packages",
       "groupSlug": "next-packages"
     },
     {
       "matchPackageNames": ["react", "react-*"],
-      "groupName": "React packages",
+      "groupName": "React Packages",
       "groupSlug": "react-packages"
     },
     {
       "matchPackageNames": ["typescript", "ts-*"],
-      "groupName": "TypeScript packages",
+      "groupName": "TypeScript Packages",
       "groupSlug": "typescript-packages"
     },
     {
       "matchPackagePatterns": ["^@types/"],
-      "groupName": "Type Definitions packages",
+      "groupName": "Type Definitions Packages",
       "groupSlug": "type-definitions-packages"
     },
     {
-      "vulnerabilityAlerts": {
-        "groupName": "security updates",
-        "groupSlug": "security-updates",
-        "automerge": true,
-        "automergeType": "branch"
-      }
+      "matchManagers": ["npm"],
+      "matchUpdateTypes": ["patch"],
+      "groupName": "Security Updates",
+      "groupSlug": "security-updates",
+      "automerge": true,
+      "automergeType": "branch"
     }
   ]
 }
-
