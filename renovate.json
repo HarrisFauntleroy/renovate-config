@@ -6,13 +6,17 @@
     "group:linters"
   ],
   "timezone": "UTC",
-  "schedule": ["before 3am on the first day of the month"],
   "prCreation": "not-pending",
   "stabilityDays": 7,
   "rangeStrategy": "bump",
   "semanticCommits": true,
   "vulnerabilityAlerts": {
     "enabled": true
+  },
+  "prHourlyLimit": 2,
+  "prConcurrentLimit": 5,
+  "lockFileMaintenance": {
+    "enabled": true,
   },
   "packageRules": [
     {
@@ -59,6 +63,26 @@
       "matchUpdateTypes": ["patch"],
       "groupName": "Security Updates",
       "groupSlug": "security-updates",
+      "automerge": true,
+      "automergeType": "branch"
+    },
+    {
+      "matchPackageNames": ["jest", "jest-*", "@testing-library/react", "@testing-library/jest-dom"],
+      "groupName": "Testing Packages",
+      "groupSlug": "testing-packages"
+    },
+    {
+      "matchUpdateTypes": ["major"],
+      "groupName": "Major Updates",
+      "groupSlug": "major-updates",
+      "automerge": false
+    },
+    {
+      "matchPackageNames": ["react", "react-dom", "next"],
+      "stabilityDays": 14
+    },
+    {
+      "matchUpdateTypes": ["minor", "patch"],
       "automerge": true,
       "automergeType": "branch"
     }
