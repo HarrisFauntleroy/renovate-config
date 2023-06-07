@@ -6,6 +6,7 @@
     "group:linters"
   ],
   "timezone": "UTC",
+  "schedule": "every weekend".
   "prCreation": "not-pending",
   "prBodyNotes": ["@openai: ignore"],
   "stabilityDays": 7,
