@@ -1,0 +1,37 @@
+{
+  "extends": [
+    "config:base",
+    "group:monorepos",
+    "group:recommended",
+    "group:linters",
+    "schedule:nonOfficeHours",
+    ":automergeMinor",
+    ":automergePatch"
+  ],
+  "timezone": "UTC",
+  "minimumReleaseAge": 7,
+  "prCreation": "immediate",
+  "rangeStrategy": "widen",
+  "semanticCommits": true,
+  "vulnerabilityAlerts": {
+    "enabled": true
+  },
+  "lockFileMaintenance": {
+    "enabled": true
+  },
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["major"],
+      "automerge": false
+    },
+    {
+      "depTypeList": ["devDependencies"],
+      "automerge": true
+    },
+    {
+      "depTypeList": ["devDependencies"],
+      "groupName": "Development Dependencies",
+      "groupSlug": "dev-dependencies"
+    }
+  ]
+}
