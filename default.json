@@ -4,34 +4,39 @@
     "group:monorepos",
     "group:recommended",
     "group:linters",
-    "schedule:nonOfficeHours",
-    ":automergeMinor",
-    ":automergePatch"
+    "schedule:weekly"
   ],
   "timezone": "UTC",
   "minimumReleaseAge": 7,
-  "prCreation": "immediate",
-  "rangeStrategy": "widen",
+  "prCreation": "not-pending",
+  "rangeStrategy": "pin",
   "semanticCommits": true,
   "vulnerabilityAlerts": {
     "enabled": true
   },
   "lockFileMaintenance": {
-    "enabled": true
+    "enabled": true,
+    "schedule": ["before 6am on sunday"]
   },
   "packageRules": [
     {
-      "matchUpdateTypes": ["major"],
+      "matchUpdateTypes": ["major", "minor", "patch"],
       "automerge": false
     },
     {
-      "depTypeList": ["devDependencies"],
-      "automerge": true
+      "depTypeList": ["dependencies"],
+      "groupName": "Runtime Dependencies",
+      "groupSlug": "runtime-dependencies"
     },
     {
       "depTypeList": ["devDependencies"],
       "groupName": "Development Dependencies",
       "groupSlug": "dev-dependencies"
+    },
+    {
+      "depTypeList": ["engines", "peerDependencies"],
+      "groupName": "Framework & Peer Requirements",
+      "groupSlug": "peer-dependencies"
     }
   ]
 }
